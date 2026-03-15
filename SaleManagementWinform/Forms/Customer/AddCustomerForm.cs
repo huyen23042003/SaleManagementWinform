@@ -80,6 +80,12 @@ namespace SaleManagementWinform.Forms
                 tbPhone.Focus();
                 return false;
             }
+            if (!tbPhone.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Số điện thoại chỉ được phép chứa các chữ số (0-9)", "Định dạng không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbPhone.Focus();
+                return false;
+            }
             var customer = new CustomerEntity
             {
                 CustomerID = tbCustomerID.Text,

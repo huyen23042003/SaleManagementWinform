@@ -57,6 +57,12 @@ namespace SaleManagementWinform.Forms
                 tbPhone.Focus();
                 return ;
             }
+            if (!tbPhone.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Số điện thoại chỉ được phép chứa các chữ số (0-9)", "Định dạng không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbPhone.Focus();
+                return;
+            }
 
             var customer = new CustomerEntity
             {
