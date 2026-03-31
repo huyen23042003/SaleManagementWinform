@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SaleManagementWinform.Common.Enums;
+using SaleManagementWinform.Forms.Customer;
 
 namespace SaleManagementWinform.Forms
 {
@@ -53,10 +55,10 @@ namespace SaleManagementWinform.Forms
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            AddCustomerForm addCustomerForm = new AddCustomerForm();
-            if(addCustomerForm.ShowDialog() == DialogResult.OK)
+            CustomerDetailForm form = new CustomerDetailForm(FormMode.Add);
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                this.GetCustomers();
+                GetCustomers();
             }
         }
 
@@ -67,13 +69,13 @@ namespace SaleManagementWinform.Forms
             if (customersTable.CurrentRow == null ||
                 customersTable.CurrentRow.Cells["CustomerID"].Value == null)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn khách hàng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             string customerID = customersTable.CurrentRow.Cells["CustomerID"].Value.ToString();
             string customerName = customersTable.CurrentRow.Cells["CustomerName"].Value.ToString();
 
-            DialogResult confirm = MessageBox.Show($"Bạn có chắc muốn xóa sản phẩm: {customerName} không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult confirm = MessageBox.Show($"Bạn có chắc muốn xóa khách hàng: {customerName} không ?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {
@@ -101,27 +103,27 @@ namespace SaleManagementWinform.Forms
         {
             if (customersTable.CurrentRow == null || customersTable.CurrentRow.Cells["CustomerID"].Value == null)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần xem!");
+                MessageBox.Show("Vui lòng chọn khách hàng cần xem!");
                 return;
             }
 
             string customerID = customersTable.CurrentRow.Cells["CustomerID"].Value.ToString();
-            ViewCustomerDetailForm viewCustomerDetailForm = new ViewCustomerDetailForm(customerID);
-            viewCustomerDetailForm.ShowDialog();
+            CustomerDetailForm form = new CustomerDetailForm(FormMode.View, customerID);
+            form.ShowDialog();
         }
 
         private void btnEditCustomer_Click(object sender, EventArgs e)
         {
             if (customersTable.CurrentRow == null || customersTable.CurrentRow.Cells["CustomerID"].Value == null)
             {
-                MessageBox.Show("Vui lòng chọn sản phẩm cần sửa!");
+                MessageBox.Show("Vui lòng chọn khách hàng cần sửa!");
                 return;
             }
 
             string customerID = customersTable.CurrentRow.Cells["CustomerID"].Value.ToString();
 
-            EditCustomerForm editForm = new EditCustomerForm(customerID);
-            if (editForm.ShowDialog() == DialogResult.OK)
+            CustomerDetailForm form = new CustomerDetailForm(FormMode.Edit, customerID);
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 GetCustomers();
             }

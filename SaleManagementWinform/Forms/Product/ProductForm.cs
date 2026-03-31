@@ -1,6 +1,7 @@
-﻿using SaleManagementWinform.Forms;
-using SaleManagementWinform.Repository;
+﻿using SaleManagementWinform.Common.Enums;
+using SaleManagementWinform.Forms;
 using SaleManagementWinform.Models;
+using SaleManagementWinform.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,6 +48,8 @@ namespace SaleManagementWinform
             this.productsTable.DataSource = dataTable;
 
             this.productsTable.Columns["Price"].DefaultCellStyle.Format = "N0";
+            this.productsTable.Columns["Price"].DefaultCellStyle.FormatProvider =
+                new System.Globalization.CultureInfo("vi-VN");
             this.productsTable.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
@@ -54,10 +57,10 @@ namespace SaleManagementWinform
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            AddProductForm addProductForm = new AddProductForm();
-            if (addProductForm.ShowDialog() == DialogResult.OK)
+            ProductDetailForm form = new ProductDetailForm(FormMode.Add);
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                this.GetProducts();
+                GetProducts();
             }
         }
 
@@ -70,8 +73,8 @@ namespace SaleManagementWinform
             }
 
             string productID = productsTable.CurrentRow.Cells["ProductID"].Value.ToString();
-            ViewProductDetailForm viewProductDetailForm = new ViewProductDetailForm(productID);
-            viewProductDetailForm.ShowDialog();
+            ProductDetailForm form = new ProductDetailForm(FormMode.View,productID);
+            form.ShowDialog();
         }
 
         private void btnEditProduct_Click(object sender, EventArgs e)
@@ -84,8 +87,8 @@ namespace SaleManagementWinform
 
             string productID = productsTable.CurrentRow.Cells["ProductID"].Value.ToString();
 
-            EditProductForm editForm = new EditProductForm(productID);
-            if (editForm.ShowDialog() == DialogResult.OK)
+            ProductDetailForm form = new ProductDetailForm(FormMode.Edit,productID);
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 GetProducts();
             }

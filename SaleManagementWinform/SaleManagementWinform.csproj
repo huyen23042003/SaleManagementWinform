@@ -171,59 +171,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Customer\AddCustomerForm.cs">
+    <Compile Include="Common\Enums\FormMode.cs" />
+    <Compile Include="Common\Helpers\FormatHelper.cs" />
+    <Compile Include="Common\Helpers\Validator.cs" />
+    <Compile Include="Forms\Customer\CustomerDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Customer\AddCustomerForm.Designer.cs">
-      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    <Compile Include="Forms\Customer\CustomerDetailForm.Designer.cs">
+      <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Customer\ViewCustomerDetailForm.cs">
+    <Compile Include="Forms\Invoice\InvoiceDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Customer\ViewCustomerDetailForm.Designer.cs">
-      <DependentUpon>ViewCustomerDetailForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Invoice\AddInvoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Invoice\AddInvoiceForm.Designer.cs">
-      <DependentUpon>AddInvoiceForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Invoice\EditInvoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Invoice\EditInvoiceForm.Designer.cs">
-      <DependentUpon>EditInvoiceForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Invoice\ViewInvoiceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Invoice\ViewInvoiceForm.Designer.cs">
-      <DependentUpon>ViewInvoiceForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Product\AddProductForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Product\AddProductForm.Designer.cs">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
+    <Compile Include="Forms\Invoice\InvoiceDetailForm.Designer.cs">
+      <DependentUpon>InvoiceDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Customer\CustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Customer\CustomerForm.Designer.cs">
       <DependentUpon>CustomerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Customer\EditCustomerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Customer\EditCustomerForm.Designer.cs">
-      <DependentUpon>EditCustomerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Product\EditProductForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Product\EditProductForm.Designer.cs">
-      <DependentUpon>EditProductForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\HomeForm.cs">
       <SubType>Form</SubType>
@@ -237,17 +204,17 @@
     <Compile Include="Forms\Invoice\InvoiceForm.Designer.cs">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Product\ProductDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Product\ProductDetailForm.Designer.cs">
+      <DependentUpon>ProductDetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Product\ProductForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Product\ProductForm.Designer.cs">
       <DependentUpon>ProductForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Product\ViewProductDetailForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Product\ViewProductDetailForm.Designer.cs">
-      <DependentUpon>ViewProductDetailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerEntity.cs" />
     <Compile Include="Models\InvoiceDetailEntity.cs" />
@@ -258,44 +225,26 @@
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\InvoiceRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
-    <EmbeddedResource Include="Forms\Customer\AddCustomerForm.resx">
-      <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Customer\CustomerDetailForm.resx">
+      <DependentUpon>CustomerDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\ViewCustomerDetailForm.resx">
-      <DependentUpon>ViewCustomerDetailForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Invoice\AddInvoiceForm.resx">
-      <DependentUpon>AddInvoiceForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Invoice\EditInvoiceForm.resx">
-      <DependentUpon>EditInvoiceForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Invoice\InvoiceDetailForm.resx">
+      <DependentUpon>InvoiceDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Invoice\InvoiceForm.resx">
       <DependentUpon>InvoiceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Invoice\ViewInvoiceForm.resx">
-      <DependentUpon>ViewInvoiceForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Product\AddProductForm.resx">
-      <DependentUpon>AddProductForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Customer\CustomerForm.resx">
       <DependentUpon>CustomerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Customer\EditCustomerForm.resx">
-      <DependentUpon>EditCustomerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Product\EditProductForm.resx">
-      <DependentUpon>EditProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Product\ProductDetailForm.resx">
+      <DependentUpon>ProductDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Product\ProductForm.resx">
       <DependentUpon>ProductForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Product\ViewProductDetailForm.resx">
-      <DependentUpon>ViewProductDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

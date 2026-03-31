@@ -50,7 +50,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182))))); 
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(89)))), ((int)(((byte)(182)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.invoicesTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.invoicesTable.ColumnHeadersHeight = 45;
@@ -198,6 +198,7 @@
             this.Name = "InvoiceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DANH MỤC HÓA ĐƠN";
+            this.Load += new System.EventHandler(this.InvoiceForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.invoicesTable)).EndInit();
             this.contextMenuAction.ResumeLayout(false);
             this.ResumeLayout(false);

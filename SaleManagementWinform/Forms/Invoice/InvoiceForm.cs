@@ -1,6 +1,9 @@
-﻿using SaleManagementWinform.Forms.Invoice;
-using SaleManagementWinform.Repository;
+﻿using SaleManagementWinform.Common.Enums;
+using SaleManagementWinform.Common.Helpers;
+using SaleManagementWinform.Forms.Invoice;
+using SaleManagementWinform.Forms.Invoice;
 using SaleManagementWinform.Models;
+using SaleManagementWinform.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,8 +36,7 @@ namespace SaleManagementWinform.Forms
             dt.Columns.Add("InvoiceID");
             dt.Columns.Add("CustomerID");
             dt.Columns.Add("InvoiceDate");
-            dt.Columns.Add("TotalPrice", typeof(decimal));
-
+            dt.Columns.Add("TotalPrice");
             List<InvoiceEntity> invoices = _invoiceReporitory.GetAllInvoices();
             foreach (InvoiceEntity invoice in invoices)
             {
@@ -42,13 +44,11 @@ namespace SaleManagementWinform.Forms
                 row["InvoiceID"] = invoice.InvoiceID;
                 row["CustomerID"] = invoice.CustomerID;
                 row["InvoiceDate"] = invoice.InvoiceDate.ToString("dd/MM/yyyy");
-                row["TotalPrice"] = invoice.TotalPrice;
-
+                row["TotalPrice"] = FormatHelper.FormatCurrency(invoice.TotalPrice);
                 dt.Rows.Add(row);
             }
 
             this.invoicesTable.DataSource = dt;
-            this.invoicesTable.Columns["TotalPrice"].DefaultCellStyle.Format = "N0";
             this.invoicesTable.Columns["InvoiceDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
 
             
@@ -67,8 +67,8 @@ namespace SaleManagementWinform.Forms
 
         private void btnAddInvocie_Click(object sender, EventArgs e)
         {
-            AddInvoiceForm addInvoiceForm = new AddInvoiceForm();
-            if(addInvoiceForm.ShowDialog() == DialogResult.OK)
+            InvoiceDetailForm form = new InvoiceDetailForm(FormMode.Add);
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 GetAllInvoices();
                 return;
@@ -85,8 +85,8 @@ namespace SaleManagementWinform.Forms
                 return;
             }
             string invoiceID = invoicesTable.CurrentRow.Cells["InvoiceID"].Value.ToString();
-            EditInvoiceForm editInvoiceForm = new EditInvoiceForm(invoiceID);
-            if (editInvoiceForm.ShowDialog() == DialogResult.OK)
+            InvoiceDetailForm form = new InvoiceDetailForm(FormMode.Edit, invoiceID);
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 GetAllInvoices();
             }
@@ -101,7 +101,7 @@ namespace SaleManagementWinform.Forms
                 return;
             }
             string invoiceID = invoicesTable.CurrentRow.Cells["InvoiceID"].Value.ToString();
-            ViewInvoiceForm form = new ViewInvoiceForm(invoiceID);
+            InvoiceDetailForm form = new InvoiceDetailForm(FormMode.View, invoiceID);
             form.ShowDialog();
 
         }
@@ -115,8 +115,7 @@ namespace SaleManagementWinform.Forms
                 return;
             }
 
-            string invoiceID = invoicesTable.CurrentRow.Cells["invoiceID"].Value.ToString();
-
+            string invoiceID = invoicesTable.CurrentRow.Cells["InvoiceID"].Value.ToString();
             DialogResult confirm = MessageBox.Show($"Bạn có muốn xóa hóa đơn {invoiceID} không?","Xác nhận",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (confirm == DialogResult.Yes)
             {
@@ -140,6 +139,9 @@ namespace SaleManagementWinform.Forms
             this.Close();
         }
 
+        private void InvoiceForm_Load_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }
