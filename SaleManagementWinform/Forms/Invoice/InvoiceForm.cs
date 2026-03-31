@@ -1,7 +1,6 @@
 ﻿using SaleManagementWinform.Common.Enums;
 using SaleManagementWinform.Common.Helpers;
 using SaleManagementWinform.Forms.Invoice;
-using SaleManagementWinform.Forms.Invoice;
 using SaleManagementWinform.Models;
 using SaleManagementWinform.Repository;
 using System;
